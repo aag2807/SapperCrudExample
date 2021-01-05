@@ -5,8 +5,10 @@ const options = { useNewUrlParser: true, useUnifiedTopology: true };
 let collection;
 
 export async function getCollection() {
-	if(!collection){
-		const client = await MongoClient.connect(url,options);
-		const db = client.db('animals');
-	}
+  if (!collection) {
+    const client = await MongoClient.connect(url, options);
+    const db = client.db("animals");
+    collection = await db.collection("dogs");
+  }
+  return collection;
 }
